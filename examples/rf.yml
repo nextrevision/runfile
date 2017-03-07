@@ -1,6 +1,0 @@
----
-check:
-  command: ls
-
-build:
-  command: whoami

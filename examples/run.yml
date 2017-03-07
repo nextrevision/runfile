@@ -1,0 +1,20 @@
+test:
+  type: shell
+  content: |
+    ls -al
+    echo "Script: $0"
+build:
+  type: shell
+  script: ./script.sh
+  quiet: true
+render:
+  type: template
+  #source: https://raw.githubusercontent.com/nextrevision/runfile/master/examples/example.tmpl
+  #source: example.tmpl
+  content: |
+    Hello, {{ .name }} from inline template!
+  destination: hello.txt
+  vars:
+    name: runfile
+    parentkey:
+      childkey1: childval1
