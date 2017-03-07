@@ -82,10 +82,8 @@ func loadRunFile(filename string) (map[string]interface{}, error) {
 		return config, err
 	}
 
-	if err = yaml.Unmarshal(contents, &config); err != nil {
-		return config, err
-	}
-	return config, nil
+	err = yaml.Unmarshal(contents, &config)
+	return config, err
 }
 
 func pluginsFromConfig(config map[string]interface{}) (map[string]plugins.Plugin, error) {
