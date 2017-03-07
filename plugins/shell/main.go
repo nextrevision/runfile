@@ -42,7 +42,7 @@ func (c Config) Type() string {
 
 // Run ...
 func (c Config) Run() error {
-	var script string
+	script := c.Script
 
 	if c.Content != "" {
 		tmpfile, err := ioutil.TempFile("", "runshell")
@@ -69,14 +69,14 @@ func (c Config) Run() error {
 			return err
 		}
 		script = tmpfile.Name()
-	} else {
-		script = c.Script
 	}
 
-	out, err := exec.Command(script).CombinedOutput()
-	output := string(out[:])
-	if !c.Quiet && output != "" {
-		fmt.Printf("%s", output)
+	cmd := exec.Cmd{Path: script}
+	if !c.Quiet {
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
 	}
+	
+	err := cmd.Run()
 	return err
 }
