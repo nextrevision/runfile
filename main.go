@@ -43,7 +43,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if printTasks {
+	if printTasks || len(flag.Args()) == 0 {
 		for task, plugin := range pluginMap {
 			fmt.Printf("%s (%s)\n", task, plugin.Type())
 		}

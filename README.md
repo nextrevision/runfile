@@ -7,20 +7,17 @@ file-based task execution
 
 See a list of tasks
 
-    rf
+    runfile
 
 Execute a single task
 
-    rf <task>
+    runfile <task>
 
 
 Execute multiple tasks:
 
-    rf <task> <task>
+    runfile <task> <task>
 
+## Examples
 
-## Todo
-
-* validate rf.yml files
-* standardize logging
-* add verbose option
+See examples folder.
